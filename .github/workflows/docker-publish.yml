@@ -17,5 +17,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: marcosbz/test-marcosbz
-          tags: latest
+          tags: marcosbz/test-marcosbz:latest
