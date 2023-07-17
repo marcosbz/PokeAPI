@@ -33,11 +33,7 @@ jobs:
       uses: azure/container-apps-deploy-action@v1
       with:
         imageToDeploy: docker.io/marcosbz/test-marcosbz:latest
-        resourceGroup: $RESOURCE_GROUP
-        containerAppName: $CONTAINER_APP_NAME
-        targetPort: $TARGET_PORT
+        resourceGroup: ${{ vars.RESOURCE_GROUP }}
+        containerAppName:  ${{ vars.CONTAINER_APP_NAME }}
+        targetPort: ${{ vars.TARGET_PORT }}
         ingress: external
-      env:
-        REPOSITORY_VAR: ${{ vars.RESOURCE_GROUP }}
-        ORGANIZATION_VAR: ${{ vars.CONTAINER_APP_NAME }}
-        OVERRIDE_VAR: ${{ vars.TARGET_PORT }}
