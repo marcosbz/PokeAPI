@@ -31,4 +31,6 @@ jobs:
     - name: Deploy Container App from existing Image
       uses: azure/container-apps-deploy-action@v1
       with:
-        imageToDeploy: docker.io/marcosbz/test-marcosbz:tagname
+        imageToDeploy: docker.io/marcosbz/test-marcosbz:latest
+        resourceGroup: test-rg
+        containerAppName: pokeapi-container-app
