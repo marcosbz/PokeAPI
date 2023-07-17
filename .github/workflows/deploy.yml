@@ -28,11 +28,16 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     
+    # https://learn.microsoft.com/en-us/azure/developer/python/tutorial-containerize-simple-web-app?tabs=web-app-flask
     - name: Deploy Container App from existing Image
       uses: azure/container-apps-deploy-action@v1
       with:
         imageToDeploy: docker.io/marcosbz/test-marcosbz:latest
-        resourceGroup: test-rg
-        containerAppName: pokeapi-container-app
-        targetPort: 5000
+        resourceGroup: $RESOURCE_GROUP
+        containerAppName: $CONTAINER_APP_NAME
+        targetPort: $TARGET_PORT
         ingress: external
+      env:
+        REPOSITORY_VAR: ${{ vars.RESOURCE_GROUP }}
+        ORGANIZATION_VAR: ${{ vars.CONTAINER_APP_NAME }}
+        OVERRIDE_VAR: ${{ vars.TARGET_PORT }}
