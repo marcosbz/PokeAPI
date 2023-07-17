@@ -35,3 +35,4 @@ jobs:
         resourceGroup: test-rg
         containerAppName: pokeapi-container-app
         targetPort: 5000
+        ingress: external
