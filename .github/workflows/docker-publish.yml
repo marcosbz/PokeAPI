@@ -21,5 +21,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
+          build-args: |
+            ARG_POKEAPI_BERRY_BASE_URL=${{ vars.ARG_POKEAPI_BERRY_BASE_URL }}
           push: true
           tags: marcosbz/test-marcosbz:latest
