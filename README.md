@@ -41,3 +41,12 @@ Fork the project to your repository and set the following Vars and Secrets
 - CONTAINER_APP_NAME: App name set in Azure
 - RESOURCE_GROUP: Resource group where the container App resides in Azure
 - TARGET_PORT: Port set in azure to be mapped to the port 80
+
+## Local Tests
+#### Run tests inside the docker image
+
+Once the image is built, this command can be used to run tests inside the container locally:
+
+```sh
+docker run -it --rm --entrypoint ./test.sh pokeapi:latest
+```
