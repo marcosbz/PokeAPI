@@ -1,4 +1,8 @@
+# TODO: Fix package version
 Flask
 gunicorn
 seaborn
 requests
+# testing
+pytest
+pydantic
