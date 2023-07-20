@@ -52,3 +52,12 @@ def test_allberrystats_page_with_fixture(test_client):
     assert 'variance_growth_time' in data
     assert 'mean_growth_time' in data
     assert 'frequency_growth_time' in data
+
+def test_allberrystats_page_with_monkeypatch_error_fixture(patched_test_client):
+    """
+    GIVEN a Flask application configured for testing
+    WHEN the '/allBerryStats' page is posted to (GET) but the ARG_POKEAPI_BERRY_BASE_URL is set to a wrong value
+    THEN check that the response is invalid (500)
+    """
+    response = patched_test_client.get('/allBerryStats')
+    assert response.status_code == 500
