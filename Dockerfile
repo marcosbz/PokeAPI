@@ -12,7 +12,6 @@ RUN venv/bin/pip install -r requirements.txt
 
 COPY . .
 RUN chmod +x boot.sh
-RUN chmod +x test.sh
 
 ENV FLASK_APP pokeapi.py
 ENV POKEAPI_BERRY_BASE_URL=$ARG_POKEAPI_BERRY_BASE_URL
