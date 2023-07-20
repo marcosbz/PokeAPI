@@ -1,6 +1,6 @@
 # Importing flask module in the project is mandatory
 # An object of Flask class is our WSGI application.
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 from utils.berry_stats import BerryStats
 import os
 from app.main import bp
@@ -15,10 +15,13 @@ def hello_world():
 
 @bp.route('/allBerryStats')
 def all_berry_stats():
-    url = os.getenv('POKEAPI_BERRY_BASE_URL')
-    print(url)
-    allBerryStats = BerryStats(url)
-    allBerryStats.fetch_stats()
-    stats_dict = allBerryStats.calculate_stats()
-    print(stats_dict)
+    try:
+        url = os.getenv('POKEAPI_BERRY_BASE_URL')
+        print(url)
+        allBerryStats = BerryStats(url)
+        allBerryStats.fetch_stats()
+        stats_dict = allBerryStats.calculate_stats()
+        print(stats_dict)
+    except:
+        abort(500)
     return jsonify(stats_dict)
